@@ -2,29 +2,27 @@
 #define False 0
 #define True 1
 
-int* input_array(int array[]){
+int* input_array(int array[], int size){
 
-	for(int i = 0; i<10; i++){
+	for(int i = 0; i<size; i++){
 
 		printf("\n type in value %d\n",i);
 		scanf("%d",&array[i]);
 }
 
-return array;
+	return array;
 }
 
 
 
 
-void print_array(int array[]){
+void print_array(int array[], int size){
 
-	for(int i = 0; i<10; i++){
+	for(int i = 0; i<size; i++){
 	
 		printf("\t %d ",array[i]);
 
-
 	}
-
 
 }
 
@@ -67,19 +65,24 @@ int binary_search(int array[], int search, int left , int right){
 int main(){
 
 int *array = (int*)malloc(sizeof(int)*10);
+int size, left, right, search;
 
-array = input_array(array);
-print_array(array);
+// Ask for size of the array to be inputted
+printf("\nENTER SIZE OF THE ARRAY TO BE INPUTTED: \n");
+scanf("%d",&size);
+
+array = input_array(array, size);
+
+// Print array as inputted
+print_array(array, size);
+
 
 // Apply binary search to search an element;
 
 printf("\nTYPE IN AN ELEMENT TO SEARCH\n");
-int search;
 scanf("%d",&search);
 
-int left, right;
-
-if(binary_search(array, search, left = 0, right = 9)){
+if(binary_search(array, search, left = 0, right = size-1)){
 
 	printf("\nELEMENT FOUND\n");
 
